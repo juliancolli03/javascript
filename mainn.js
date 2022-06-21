@@ -2,9 +2,11 @@ function saludar(){
     let nombre = prompt('¿Cómo es tu nombre?')
     if (nombre !== ""){
     alert("Hola " + nombre )
-    }
-    else{
-        alert("No escribiste tu nombre")
+    }else if(nombre == ""){
+        alert("escribi tu nombre dale")
+        saludar()
+    }else{
+        alert("solo letras")
         saludar()
     }
 }
@@ -13,8 +15,8 @@ saludar()
 function repreguntar(){
     let repregunta = prompt('¿Desea comprar algo? (si/no)')
     if(repregunta == 'no'){
-        alert("Gasta algo dale")
-        repreguntar()
+        alert("Ok gracias")
+        return ; 
     }else if(repregunta == 'si'){
         alert('ok')
     }else{
@@ -25,7 +27,7 @@ function repreguntar(){
 repreguntar()
 
 function resina (){
-    let recina = (prompt("Cuanto queres gastar?"))
+    let recina =parseFloat (prompt("Cuanto queres gastar?"))
     if(recina <=10){
         alert ("No podes comprar nada raton")
         resina()
