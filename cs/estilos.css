@@ -1,3 +1,41 @@
-header{
-    display: flex;
+/* --SELECTOR UNIVERSAL-- */
+*{
+    margin: 0;
+    padding: 0;
 }
+body{
+    background-color:azure
+}
+.navbar{
+  border-bottom: 3px solid gray;
+}
+.nav-link{
+    display: inline-block;
+  }
+  .navbar_style ul li a:hover {
+    color: 	#fc4b08 !important;
+  }
+  header ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 0px;
+  }
+  .navbar-brand{
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+    margin-left: -5px;
+  }
+  .navbar-collapse{
+    flex-grow: 0;
+  }
+  header ul li:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  .li{
+    margin: 0px 5px 0px 5px;
+  }
