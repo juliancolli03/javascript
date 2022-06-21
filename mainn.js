@@ -16,7 +16,7 @@ function repreguntar(){
     let repregunta = prompt('¿Desea comprar algo? (si/no)')
     if(repregunta == 'no'){
         alert("Ok gracias")
-        return ; 
+        return "gracias" + nombre; 
     }else if(repregunta == 'si'){
         alert('ok')
     }else{

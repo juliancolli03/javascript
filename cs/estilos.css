@@ -8,23 +8,23 @@ body{
 }
 .navbar{
   border-bottom: 3px solid gray;
+  padding: 15px;
 }
 .nav-link{
     display: inline-block;
   }
   .navbar_style ul li a:hover {
-    color: 	#fc4b08 !important;
+    color: 	#cecece !important;
   }
   header ul li a {
     color: white;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     padding: 10px 0px;
   }
   .navbar-brand{
-    font-size: 17px;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
     margin-left: -5px;
   }
   .navbar-collapse{
@@ -38,4 +38,6 @@ body{
   }
   .li{
     margin: 0px 5px 0px 5px;
+    padding-left: 11px;
+padding-right: 11px;
   }
