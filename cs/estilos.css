@@ -10,6 +10,12 @@ body{
   border-bottom: 3px solid gray;
   padding: 15px;
 }
+.container-fluid{
+  width: 90%;
+}
+.navbar a{
+  font-size: 20px;
+}
 .nav-link{
     display: inline-block;
   }
@@ -24,8 +30,8 @@ body{
     padding: 10px 0px;
   }
   .navbar-brand{
-    font-size: 18px;
     margin-left: -5px;
+    border-right: 3px solid gray;
   }
   .navbar-collapse{
     flex-grow: 0;
@@ -40,4 +46,13 @@ body{
     margin: 0px 5px 0px 5px;
     padding-left: 11px;
 padding-right: 11px;
+  }
+  .bloque{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  h1{
+    font-size: 70px;
   }
