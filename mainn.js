@@ -49,7 +49,7 @@ function resinass(){
     }else if (medioPago == '2' ){
         final.push(`Resina ${RESINOTA.elcolor} de ${RESINOTA.volumen}\n`)
         alerta()
-    let cuanttas = parseInt(prompt("cuantas quiere?"))
+    let cuanttas =  parseInt (prompt("cuantas quiere?"))
     let precioFinal = 400 * cuanttas
     alert(`Usted va a pagar: $${precioFinal} si esta de acuerdo toque en "Aceptar" y el pago se realiza al instante`)
     }
