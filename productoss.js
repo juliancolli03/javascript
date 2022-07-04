@@ -49,19 +49,29 @@ function resinass(){
             let unFinal= LOSPRODUCTOS.map(x => x.precio)
             let uniFinal= LOSPRODUCTOS.map(x => x.color)
             let uneFinal= LOSPRODUCTOS.map(x => x.cantidad)
-            let tamaño = parseInt(prompt("Cuantas queres"))
-            alert("El precio es de cada una es "+ unFinal + "la cantidad que trae es " + uneFinal + " el color que trae es " + uniFinal)
-        let subtotal =  unFinal * tamaño
-        alert(`Usted va a pagar: $${subtotal} si esta de acuerdo toque en "Aceptar" y el pago se realiza al instante. No tenemos mas stock que una`)
+            let tamanio = parseInt(prompt("Cuantas queres"))
+            if(!(isNaN(tamanio))){
+                alert("El precio es de cada una es "+ unFinal + "la cantidad que trae es " + uneFinal + " el color que trae es " + uniFinal)
+                let subtotal =  unFinal * tamanio
+                alert(`Usted va a pagar: $${subtotal} si esta de acuerdo toque en "Aceptar" y el pago se realiza al instante. No tenemos mas stock que una`)
+            } else{
+                alert("No ingresaste un numero")
+                resinass()
+            }
         }else if (nombreProducto == '2' ){
             let unFinal= ELPROCUTO.map(x => x.precio)
             let uniFinal= ELPROCUTO.map(x => x.color)
             let uneFinal= ELPROCUTO.map(x => x.cantidad)
-            let tamaño = parseInt(prompt("Cuantas queres"))
+            let tamanio = parseInt(prompt("Cuantas queres"))
+            if(!(isNaN(tamanio))){
             alert("El precio es de cada una es "+ unFinal + "la cantidad que trae es " + uneFinal + " el color que trae es " + uniFinal)
-            let subtotal =  unFinal * tamaño
+            let subtotal =  unFinal * tamanio
             alert(`Usted va a pagar: $${subtotal} si esta de acuerdo toque en "Aceptar" y el pago se realiza al instante. No tenemos mas stock que una`)
         } else{
+            alert("No ingresaste un numero")
+            resinass()
+        }
+    } else{
             alert("Ingresa una de las opciones")
             resinass()
         }
