@@ -73,6 +73,23 @@ function resinass(){
         }
     } else{
             alert("Ingresa una de las opciones")
-            resinass()
+            resinas ()
         }
 }resinass()
+
+let productosEnHtml = document.getElementById("productoresina")
+
+for(const TODORESINA of ELPROCUTO){
+    let honda=document.createElement("span")
+    honda.innerHTML= 
+    `<p> ${TODORESINA.nombre
+    } </p>
+    <p> ${TODORESINA.color
+    } </p>
+    <p> ${TODORESINA.cantidad
+    } </p>
+    <p> ${TODORESINA.precio
+    } </p>
+    `
+    productosEnHtml.append(honda)
+}
