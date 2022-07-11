@@ -77,19 +77,26 @@ function resinass(){
         }
 }resinass()
 
-let productosEnHtml = document.getElementById("productoresina")
+// let menu = document.getElementById('menu');
+// let menu_bar = document.getElementById('menu_bar');
 
-for(const TODORESINA of ELPROCUTO){
-    let honda=document.createElement("span")
-    honda.innerHTML= 
-    `<p> ${TODORESINA.nombre
-    } </p>
-    <p> ${TODORESINA.color
-    } </p>
-    <p> ${TODORESINA.cantidad
-    } </p>
-    <p> ${TODORESINA.precio
-    } </p>
-    `
-    productosEnHtml.append(honda)
-}
+// menu_bar.addEventListener('click', function() {
+//   menu.classList.toggle('show-menu');
+  
+// })
+// let productosEnHtml = document.getElementById("productoresina")
+
+// for(const TODORESINA of ELPROCUTO){
+//     let honda=document.createElement("span")
+//     honda.innerHTML= 
+//     `<p> ${TODORESINA.nombre
+//     } </p>
+//     <p> ${TODORESINA.color
+//     } </p>
+//     <p> ${TODORESINA.cantidad
+//     } </p>
+//     <p> ${TODORESINA.precio
+//     } </p>
+//     `
+//     productosEnHtml.append(honda)
+// }
