@@ -122,6 +122,7 @@ justify-content: center;
   width: 30%;
   margin-right: 90px;
 }
+
 .chamuyo{
   display: flex;
   font-size: 1.3em;
@@ -217,7 +218,6 @@ a{
 }
 .redes-container ul li a{
   display: block;
-  padding: 15px;
   background: #333;
   color: white;
   line-height: 50px;
