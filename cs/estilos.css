@@ -151,9 +151,8 @@ a{
   text-decoration: none;
   color: white;
 }
-a :hover{
-    color: var(--alt-color) !important;
-    
+.noboostrap:hover{
+  color: var(--alt-color);
 }
 .main-img {
   width: 90%;
