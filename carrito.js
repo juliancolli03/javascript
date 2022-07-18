@@ -30,34 +30,53 @@ class Carrito {
 function renderCard(producto) {
     let cardRendered = `    
     <div class="card m-3" style="width: 18rem;">
-        <img src="${producto.imagen} "height="300px" class="card-img-top cardImg" alt="...">
+        <img src="${producto.imagen}"height="300px" class="card-img-top cardImg" alt="...">
         <div class="card-body">
-            <h5 class="card-title">${producto.id}.${producto.nombre}</h5>
-            <p class="card-text">$ ${producto.precio}</p>
-            <a href="#" class="btn btn-primary botonDeCompra" id="${producto.id}">Agregar al carrito</a>
+            <h5 class="card-title">${producto.id}. ${producto.nombre}  <br>
+            <div class ="mt-1">  Cantidad: ${producto.cantidad} </div>
+            <hr>
+            </h5>
+            <p class="card-text fs-4">$ ${producto.precio}</p>
+            <a href="#" class="btn btn-success botonDeCompra" id="${producto.id}">Agregar al carrito</a>
         </div>
     </div>
     `;
     return cardRendered;
 }
 
-function limpiarCarrito() {
-    let divCarrito = document.querySelector("#carrito");
-    divCarrito.innerHTML = "";
+function renderCardParaCarro(producto) {
+    let cardRendered = `
+    <div class ="" style="background: gray;">    
+    <div class="card m-3" style="width: 16rem; padding: 1rem;">
+        <img src="${producto.imagen} "height="100px" class="card-img-top cardImg" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">${producto.id}.${producto.nombre}</h5>
+            <p class="card-text">$ ${producto.precio}</p>
+            <a href="#" class="btn btn-success eliminar" id="${producto.id} eliminar">Eliminar del carro</a>
+        </div>
+    </div>
+    </div>
+    `;
+    return cardRendered;
 }
 
+function limpiarCarrito() {
+    let divCarrito = document.getElementById("carrito");
+    divCarrito.innerHTML = "";
+    console.log(divCarrito)
+}
 function actualizarCarrito(carrito) {
-    let divCarrito = document.querySelector("#carrito");
-    carrito.productos.forEach(producto => {
-        divCarrito.innerHTML += renderCard(producto);
+    let divCarrito = document.getElementById("carrito");
+    carrito.productos.forEach(resinas => {
+        divCarrito.innerHTML += renderCardParaCarro(resinas);
     })
     divCarrito.innerHTML += `<h1 class="total">Precio Total: $ ${carrito.calcularTotal()}</h1>`
 }
 
-function renovarStorage() {
-    localStorage.removeItem("carrito"); 
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-}
+ function renovarStorage() {
+     localStorage.removeItem("carrito"); 
+     localStorage.setItem("carrito", JSON.stringify(carrito));
+ }
 
 
 /* Cargar carrito existente */
@@ -104,3 +123,6 @@ arrayDeBotones.forEach(boton => {
         renovarStorage();
     })
 });
+
+
+
