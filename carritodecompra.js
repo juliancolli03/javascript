@@ -62,13 +62,14 @@ function addToCartClicked(event) {
     const item = button.closest('.card');
   
     const itemTitle = item.querySelector('.card-title').textContent;
-    const itemPrice = item.querySelector('.card-text').textContent;
+    const itemPrice = item.querySelector('.shoppingCartItemPrice').textContent;
     const itemImage = item.querySelector('.cardImg').src
-    console.log(itemImage)
+    
     addItemToShoppingCart(itemTitle, itemPrice, itemImage);
   }
 
   function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
+
     const shoppingCartRow = document.createElement('div')
     const shoppingCartContent =`
     <div class="row shoppingCartItem">
@@ -84,42 +85,70 @@ function addToCartClicked(event) {
               </div>
           </div>
           <div class="col-4">
-              <div
-                  class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                  <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
-                      value="1">
-                  <button class="btn btn-danger buttonDelete" type="button">X</button>
-              </div>
-          </div>
-      </div>`
+            <div
+                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                    value="1">
+              <div>  <button class="btn btn-danger buttonDelete" type="button">X</button> </div>
+            </div>
+        </div>
+    </div>`;
       shoppingCartRow.innerHTML = shoppingCartContent
       shoppingCartItemContainer.append(shoppingCartRow)
+    
+      shoppingCartRow.querySelector(".buttonDelete")
+      shoppingCartRow.addEventListener('click',removeShoppingCartItem)
+
+      shoppingCartRow.querySelector(".shoppingCartItemQuantity")
+      .addEventListener("change",quantityChanged)
 
       updateShoppingCartTotal()
   }
 
-//   reeeever xq no anda esta chota
 
-  function updateShoppingCartTotal() {
-    let total = 0;
-    const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
-    const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
-  
-    shoppingCartItems.forEach((shoppingCartItem) => {
-      const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
-        '.shoppingCartItemPrice');
-      console.log(shoppingCartItemPriceElement)
-      const shoppingCartItemPrice = Number(
-        shoppingCartItemPriceElement.textContent.replace('€', '')
-      );
-      const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
-        '.shoppingCartItemQuantity'
-      );
-      const shoppingCartItemQuantity = Number(
-        shoppingCartItemQuantityElement.value
-      );
-      total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
-    
-    });
-    shoppingCartTotal.innerHTML = `${total}`
+
+   function updateShoppingCartTotal() {
+     let total = 0
+     const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
+     console.log(shoppingCartTotal)
+     const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
+    console.log(shoppingCartTotal)
+     shoppingCartItems.forEach((shoppingCartItem) => {
+       const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
+         '.shoppingCartItemPrice');
+      
+       const shoppingCartItemPrice = Number(
+         shoppingCartItemPriceElement.textContent.replace('$', '')
+       );
+       const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
+         '.shoppingCartItemQuantity'
+       );
+       const shoppingCartItemQuantity = Number(
+         shoppingCartItemQuantityElement.value
+       );
+       total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
+      
+     });
+     shoppingCartTotal.innerHTML = "" +"$ " + total
+ }
+
+function removeShoppingCartItem (event){
+  const buttonClicked = event.target
+  buttonClicked.closest(".shoppingCartItem").remove()
+
+  if(buttonClicked){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Se borro el producto',
+      showConfirmButton: false,
+      timer: 15000
+    })
   }
+  updateShoppingCartTotal()
+}
+
+function quantityChanged(event){
+  const input = event.target
+
+}
