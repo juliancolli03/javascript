@@ -18,7 +18,7 @@ function renderCard(producto) {
             <hr>
             </h5>
             <p class="card-text fs-4 shoppingCartItemPrice">$ ${producto.precio}</p>
-            <a href="#" class="btn btn-success botonDeCompra" id="${producto.id}">Agregar al carrito</a>
+            <a class="btn btn-success botonDeCompra" id="${producto.id}">Agregar al carrito</a>
         </div>
     </div>
     `;
@@ -96,8 +96,8 @@ function addToCartClicked(event) {
       shoppingCartRow.innerHTML = shoppingCartContent
       shoppingCartItemContainer.append(shoppingCartRow)
     
-      shoppingCartRow.querySelector(".buttonDelete")
-      shoppingCartRow.addEventListener('click',removeShoppingCartItem)
+    const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
+      botonborrar.addEventListener('click',removeShoppingCartItem)
 
       shoppingCartRow.querySelector(".shoppingCartItemQuantity")
       .addEventListener("change",quantityChanged)
@@ -148,7 +148,8 @@ function removeShoppingCartItem (event){
   updateShoppingCartTotal()
 }
 
-function quantityChanged(event){
-  const input = event.target
-
+function quantityChanged(event) {
+  const input = event.target;
+  input.value <= 0 ? (input.value = 1) : null;
+  updateShoppingCartTotal();
 }

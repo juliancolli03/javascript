@@ -232,6 +232,9 @@ a{
 .shopping-cart-total {
   min-height: 96px;
 }
+.mt-6{
+  margin-top: 100px;
+}
 /* ======= SOTIAL NETWORK ======= */
 .redes-container{
   display: flex;
