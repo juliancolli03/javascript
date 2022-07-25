@@ -28,7 +28,7 @@ function renderCard(producto) {
 
 let catalogoProductos = [];
 let producto1 = new Producto(1, "Resina pequeña", "1 litro", 200, "resinachica.jpg");
-let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "medi.jpg");
+let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "a.jpg");
 let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
 let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
 let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
@@ -69,7 +69,7 @@ function addToCartClicked(event) {
   }
 
   function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
-
+    
     const shoppingCartRow = document.createElement('div')
     const shoppingCartContent =`
     <div class="row shoppingCartItem">
@@ -103,6 +103,7 @@ function addToCartClicked(event) {
       .addEventListener("change",quantityChanged)
 
       updateShoppingCartTotal()
+      
   }
 
 
@@ -110,9 +111,9 @@ function addToCartClicked(event) {
    function updateShoppingCartTotal() {
      let total = 0
      const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
-     console.log(shoppingCartTotal)
+     
      const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
-    console.log(shoppingCartTotal)
+  
      shoppingCartItems.forEach((shoppingCartItem) => {
        const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
          '.shoppingCartItemPrice');
@@ -132,19 +133,38 @@ function addToCartClicked(event) {
      shoppingCartTotal.innerHTML = "" +"$ " + total
  }
 
-function removeShoppingCartItem (event){
-  const buttonClicked = event.target
-  buttonClicked.closest(".shoppingCartItem").remove()
+ function removeShoppingCartItem (event){
+  
 
-  if(buttonClicked){
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Se borro el producto',
-      showConfirmButton: false,
-      timer: 15000
-    })
-  }
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
+  
+  swalWithBootstrapButtons.fire({
+    title: 'Queres borrar el producto?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Si!',
+    cancelButtonText: 'No!',
+    reverseButtons: true
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const buttonClicked = event.target
+  buttonClicked.closest(".shoppingCartItem").remove()
+  updateShoppingCartTotal()
+      swalWithBootstrapButtons.fire(
+        'Producto borrado!',
+        'Your file has been deleted.',
+        'success'
+        
+      )
+    
+    }
+  })
   updateShoppingCartTotal()
 }
 
@@ -153,3 +173,6 @@ function quantityChanged(event) {
   input.value <= 0 ? (input.value = 1) : null;
   updateShoppingCartTotal();
 }
+
+
+
