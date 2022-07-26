@@ -239,6 +239,9 @@ a{
 .swal2-cancel{
   margin-right: 20px;
 } 
+.swal2-html-container{
+  color: white;
+}
 /* ======= SOTIAL NETWORK ======= */
 .redes-container{
   display: flex;
