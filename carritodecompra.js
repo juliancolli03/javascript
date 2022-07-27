@@ -7,6 +7,16 @@ class Producto {
       this.imagen = imagen;
   }
 }
+function graciass(){
+const comprarButton = document.getElementById('comprarBotoncito');
+const graciela = comprarButton.addEventListener('click', () =>  (Swal.fire({
+  icon: 'success',
+  title: 'Gracias por su compra',
+  text: 'Muy pronto estaremos confirmando su pedido',
+}))
+);
+}
+
 
 function renderCard(producto) {
   let cardRendered = `    
@@ -33,6 +43,8 @@ let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
 let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
 let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
 
+
+
 catalogoProductos.push(producto1);
 catalogoProductos.push(producto2);
 catalogoProductos.push(producto3);
@@ -51,6 +63,8 @@ const addToShoppingCartButtons = document.querySelectorAll('.botonDeCompra')
 addToShoppingCartButtons.forEach((addToCartButton) => {
 addToCartButton.addEventListener('click', addToCartClicked)
 })
+
+
 
 const shoppingCartItemContainer = document.querySelector('.shoppingCartItemsContainer')
 
@@ -72,6 +86,7 @@ function addToCartClicked(event) {
 
 function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
   
+
   const shoppingCartRow = document.createElement('div')
   const shoppingCartContent =`
   <div class="row shoppingCartItem">
@@ -95,11 +110,15 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
           </div>
       </div>
   </div>`;
-    shoppingCartRow.innerHTML = shoppingCartContent
+  const carros =  shoppingCartRow.innerHTML = shoppingCartContent
     shoppingCartItemContainer.append(shoppingCartRow)
 
-   
+    let carro =[]
+
+  carro =  carros + carro 
   
+  
+
   const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
     botonborrar.addEventListener('click',removeShoppingCartItem)
 
@@ -108,11 +127,18 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
 
     updateShoppingCartTotal()
     
-    function norepetir(itemTitle){
-    const buscarError = addItemToShoppingCart.find(prod => prod.itemTitle == itemTitle)
-    console.log(buscarError)
-  }
-  norepetir()
+    if(carro){
+      graciass()
+    //   let noRepetirGracias = document.queryCommandValue(".shoppingCartItemsContainer")
+    // let borrarTodo = noRepetirGracias.target
+    // return(borrarTodo)
+      
+    }
+
+
+    const buttonClicked = event.target
+buttonClicked.closest(".shoppingCartItem").remove()
+updateShoppingCartTotal()
 }
 
 
@@ -184,10 +210,10 @@ updateShoppingCartTotal();
 }
 
 
-  Swal.fire({
-    icon: 'success',
-    title: 'Gracias por su compra',
-    text: 'Muy pronto estaremos confirmando su pedido',
-  })
+ 
 
-localStorage.setItem(itemTitle,itemPrice,itemImage)
+
+  
+
+
+
