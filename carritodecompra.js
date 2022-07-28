@@ -18,6 +18,7 @@ const graciela = comprarButton.addEventListener('click', () =>  (Swal.fire({
 }
 
 
+
 function renderCard(producto) {
   let cardRendered = `    
   <div class="card m-3" style="width: 18rem;">
@@ -109,15 +110,17 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
             <div>  <button class="btn btn-danger buttonDelete" type="button">X</button> </div>
           </div>
       </div>
-  </div>`;
+  </div>`
   const carros =  shoppingCartRow.innerHTML = shoppingCartContent
     shoppingCartItemContainer.append(shoppingCartRow)
 
     let carro =[]
 
   carro =  carros + carro 
-  
-  
+  localStorage.setItem("carrito",JSON.stringify(shoppingCartContent))
+  if(localStorage.getItem("carrito")){
+    shoppingCartContent = JSON.parse(localStorage.getItem("carrito"))
+  }
 
   const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
     botonborrar.addEventListener('click',removeShoppingCartItem)
@@ -128,17 +131,11 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
     updateShoppingCartTotal()
     
     if(carro){
-      graciass()
-    //   let noRepetirGracias = document.queryCommandValue(".shoppingCartItemsContainer")
-    // let borrarTodo = noRepetirGracias.target
-    // return(borrarTodo)
-      
+      graciass()      
     }
 
 
-    const buttonClicked = event.target
-buttonClicked.closest(".shoppingCartItem").remove()
-updateShoppingCartTotal()
+    
 }
 
 
@@ -208,12 +205,3 @@ const input = event.target;
 input.value <= 0 ? (input.value = 1) : null;
 updateShoppingCartTotal();
 }
-
-
- 
-
-
-  
-
-
-
