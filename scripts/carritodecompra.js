@@ -54,7 +54,7 @@ const anadirResina =(id,nombre,cantidad,precio,imagen) => {
 // const productoJson =async() =>{
   async function prodcutoJson(){
   try{
-    const response = await fetch ("../Json/producto.json")
+    const response = await fetch ("./json/producto.json")
     const data = await response.json()
     data.forEach((post) => {
       anadirResina(post.id, post.nombre, post.cantidad, post.precio, post.imagen)
