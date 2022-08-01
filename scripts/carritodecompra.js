@@ -22,7 +22,7 @@ const graciela = comprarButton.addEventListener('click', () =>  (Swal.fire({
 function renderCard(producto) {
   let cardRendered = `    
   <div class="card m-3" style="width: 18rem;">
-      <img src="${producto.imagen}"height="300px" class="card-img-top cardImg" alt="...">
+      <img src="imagenes/${producto.imagen}"height="300px" class="card-img-top cardImg" alt="...">
       <div class="card-body">
           <h5 class="card-title">${producto.id}. ${producto.nombre}  <br>
           <div class ="mt-1">  Cantidad: ${producto.cantidad} </div>
@@ -48,7 +48,7 @@ let producto5 = new Producto(productoJson())
 // eljson
 
  async function productoJson(){
-   const response = await fetch("producto.json")
+   const response = await fetch("Json/producto.json")
    const data = await response.json()
    data.forEach((post) => {
      addJson(post.id,post.nombre,post.cantidad,post.precio,post.imagen)
