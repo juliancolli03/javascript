@@ -42,10 +42,20 @@ let producto1 = new Producto(1, "Resina pequeña", "1 litro", 200, "resinachica.
 let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "a.jpg");
 let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
 let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
-let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
+// let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
+let producto5 = new Producto(productoJson())
 
+// eljson
 
+ async function productoJson(){
+   const response = await fetch("producto.json")
+   const data = await response.json()
+   data.forEach((post) => {
+     addJson(post.id,post.nombre,post.cantidad,post.precio,post.imagen)
+   })
+ }
 
+// generarprodcutos
 catalogoProductos.push(producto1);
 catalogoProductos.push(producto2);
 catalogoProductos.push(producto3);
@@ -68,7 +78,6 @@ addToCartButton.addEventListener('click', addToCartClicked)
 
 
 const shoppingCartItemContainer = document.querySelector('.shoppingCartItemsContainer')
-
 
 
 
@@ -114,14 +123,17 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
   const carros =  shoppingCartRow.innerHTML = shoppingCartContent
     shoppingCartItemContainer.append(shoppingCartRow)
 
+    
     let carro =[]
 
   carro =  carros + carro 
-  localStorage.setItem("carrito",JSON.stringify(shoppingCartContent))
+  localStorage.setItem("carrito",JSON.stringify(carro))
   if(localStorage.getItem("carrito")){
-    shoppingCartContent = JSON.parse(localStorage.getItem("carrito"))
+    carro = JSON.parse(localStorage.getItem("carrito"))
   }
 
+  
+   
   const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
     botonborrar.addEventListener('click',removeShoppingCartItem)
 

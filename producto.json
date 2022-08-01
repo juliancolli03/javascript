@@ -1,0 +1,9 @@
+[
+    {
+        "id":5,
+        "nombre":"Tinte a eleccion",
+        "cantidad":"1 litro",
+        "precio":500,
+        "imagen":"l.jpg"
+    }
+]
