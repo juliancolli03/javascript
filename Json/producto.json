@@ -4,6 +4,6 @@
         "nombre":"Tinte a eleccion",
         "cantidad":"1 litro",
         "precio":500,
-        "imagen":"l.jpg"
+        "imagen":"../imagenes/l.jpg"
     }
 ]

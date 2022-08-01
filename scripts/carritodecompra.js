@@ -9,7 +9,7 @@ class Producto {
 }
 function graciass(){
 const comprarButton = document.getElementById('comprarBotoncito');
-const graciela = comprarButton.addEventListener('click', () =>  (Swal.fire({
+const graciasCompra = comprarButton.addEventListener('click', () =>  (Swal.fire({
   icon: 'success',
   title: 'Gracias por su compra',
   text: 'Muy pronto estaremos confirmando su pedido',
@@ -43,38 +43,58 @@ let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "a.jpg");
 let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
 let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
 // let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
-let producto5 = new Producto(productoJson())
+// let producto5 = new Producto(anadirResina())
+// JSON Y PROMISES
 
-// eljson
+const anadirResina =(id,nombre,cantidad,precio,imagen) => {
+  const resinaanadir = new Producto (id,nombre,cantidad,precio,imagen)
+  catalogoProductos.push (resinaanadir)
+}
 
- async function productoJson(){
-   const response = await fetch("Json/producto.json")
-   const data = await response.json()
-   data.forEach((post) => {
-     addJson(post.id,post.nombre,post.cantidad,post.precio,post.imagen)
-   })
- }
+// const productoJson =async() =>{
+  async function prodcutoJson(){
+  try{
+    const response = await fetch ("../Json/producto.json")
+    const data = await response.json()
+    data.forEach((post) => {
+      anadirResina(post.id, post.nombre, post.cantidad, post.precio, post.imagen)
+    })
+  } catch(error){
+    console.log(error)
+  }
+}
+
+
+//  async function productoJson(){
+//    const response = await fetch("Json/producto.json")
+//    const data = await response.json()
+//    data.forEach((post) => {
+//      addJson(post.id,post.nombre,post.cantidad,post.precio,post.imagen)
+//    })
+//  }
 
 // generarprodcutos
 catalogoProductos.push(producto1);
 catalogoProductos.push(producto2);
 catalogoProductos.push(producto3);
 catalogoProductos.push(producto4);
-catalogoProductos.push(producto5);
+// catalogoProductos.push(producto5);
 
 /* Generar mis tarjetas de productos */
+
+function crearcards(){
 let cardsDiv = document.querySelector("#cards");
 catalogoProductos.forEach(producto => {
   cardsDiv.innerHTML += renderCard(producto);
 })
-
+}
 // CARRITO
-
+function botonescarrito(){
 const addToShoppingCartButtons = document.querySelectorAll('.botonDeCompra')
 addToShoppingCartButtons.forEach((addToCartButton) => {
 addToCartButton.addEventListener('click', addToCartClicked)
 })
-
+}
 
 
 const shoppingCartItemContainer = document.querySelector('.shoppingCartItemsContainer')
@@ -96,7 +116,7 @@ function addToCartClicked(event) {
 
 function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
   
-
+  
   const shoppingCartRow = document.createElement('div')
   const shoppingCartContent =`
   <div class="row shoppingCartItem">
@@ -125,13 +145,14 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
 
     
     let carro =[]
-
-  carro =  carros + carro 
+    storrageeCarro()
+  carro =  carros + carro
+  function storrageeCarro(){
   localStorage.setItem("carrito",JSON.stringify(carro))
   if(localStorage.getItem("carrito")){
     carro = JSON.parse(localStorage.getItem("carrito"))
   }
-
+  }
   
    
   const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
@@ -217,3 +238,13 @@ const input = event.target;
 input.value <= 0 ? (input.value = 1) : null;
 updateShoppingCartTotal();
 }
+
+function main(){
+  prodcutoJson()
+  .then(response =>{
+    crearcards()
+    botonescarrito()
+  })
+
+}
+main()

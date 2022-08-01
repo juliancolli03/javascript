@@ -16,16 +16,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.wrapper {
-  width: auto;
-  overflow: hidden;
-  /* background-color: var(--bg-color); */
+footer{
+  background-color: dimgray;
+  color: white;
 }
-
-/* .vector {
-  width: 100%;
-  height: 100%;
-} */
 
 /* ======= NAVBAR ======= */
 header ul li :hover{
