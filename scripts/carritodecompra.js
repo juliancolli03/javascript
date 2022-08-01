@@ -38,10 +38,10 @@ function renderCard(producto) {
 
 
 let catalogoProductos = [];
-let producto1 = new Producto(1, "Resina pequeña", "1 litro", 200, "resinachica.jpg");
-let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "a.jpg");
-let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
-let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
+// let producto1 = new Producto(1, "Resina pequeña", "1 litro", 200, "resinachica.jpg");
+// let producto2 = new Producto( 2, "Resina normal", "3 litros", 600, "a.jpg");
+// let producto3 = new Producto(3, "Resina grande", "10 litros", 1000, "gr.jpg");
+// let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
 // let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
 // let producto5 = new Producto(anadirResina())
 // JSON Y PROMISES
@@ -74,10 +74,10 @@ const anadirResina =(id,nombre,cantidad,precio,imagen) => {
 //  }
 
 // generarprodcutos
-catalogoProductos.push(producto1);
-catalogoProductos.push(producto2);
-catalogoProductos.push(producto3);
-catalogoProductos.push(producto4);
+// catalogoProductos.push(producto1);
+// catalogoProductos.push(producto2);
+// catalogoProductos.push(producto3);
+// catalogoProductos.push(producto4);
 // catalogoProductos.push(producto5);
 
 /* Generar mis tarjetas de productos */
