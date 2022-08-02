@@ -144,7 +144,9 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
     shoppingCartItemContainer.append(shoppingCartRow)
 
     
-    let carro =[]
+    let carro ={} 
+    // carro = localStorage.getItem("MiCarro")
+    // localStorage.removeItem("Micarro")
     storrageeCarro()
   carro =  carros + carro
   function storrageeCarro(){
@@ -239,6 +241,8 @@ input.value <= 0 ? (input.value = 1) : null;
 updateShoppingCartTotal();
 }
 
+
+// DESACTIVARESTODSPDEENTREGA
 function main(){
   prodcutoJson()
   .then(response =>{
