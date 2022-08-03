@@ -15,6 +15,7 @@ const graciasCompra = comprarButton.addEventListener('click', () =>  (Swal.fire(
   text: 'Muy pronto estaremos confirmando su pedido',
 }))
 );
+  
 }
 
 
@@ -44,14 +45,14 @@ let catalogoProductos = [];
 // let producto4 = new Producto(4, "Tinte negro", "1 litro", 200, "ñ.jpg");
 // let producto5 = new Producto(5, "Tinte a eleccion", "1 litro", 500, "l.jpg");
 // let producto5 = new Producto(anadirResina())
-// JSON Y PROMISES
+
 
 const anadirResina =(id,nombre,cantidad,precio,imagen) => {
   const resinaanadir = new Producto (id,nombre,cantidad,precio,imagen)
   catalogoProductos.push (resinaanadir)
 }
 
-// const productoJson =async() =>{
+
   async function prodcutoJson(){
   try{
     const response = await fetch ("../Json/producto.json")
@@ -65,13 +66,7 @@ const anadirResina =(id,nombre,cantidad,precio,imagen) => {
 }
 
 
-//  async function productoJson(){
-//    const response = await fetch("Json/producto.json")
-//    const data = await response.json()
-//    data.forEach((post) => {
-//      addJson(post.id,post.nombre,post.cantidad,post.precio,post.imagen)
-//    })
-//  }
+
 
 // generarprodcutos
 // catalogoProductos.push(producto1);
@@ -108,9 +103,15 @@ function addToCartClicked(event) {
   const itemTitle = item.querySelector('.card-title').textContent;
   const itemPrice = item.querySelector('.shoppingCartItemPrice').textContent;
   const itemImage = item.querySelector('.cardImg').src
-  
-  
-
+  let carro=[]
+  carro = itemTitle + itemPrice + carro
+  function storrageeCarro(){
+    localStorage.setItem("carrito",JSON.stringify(carro))
+    if(localStorage.getItem("carrito")){
+    carro = JSON.parse(localStorage.getItem("carrito"))
+    }
+    }
+  storrageeCarro()
   addItemToShoppingCart(itemTitle, itemPrice, itemImage);
 }
 
@@ -140,23 +141,12 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
           </div>
       </div>
   </div>`
-  const carros =  shoppingCartRow.innerHTML = shoppingCartContent
+    shoppingCartRow.innerHTML = shoppingCartContent
     shoppingCartItemContainer.append(shoppingCartRow)
 
     
-    let carro ={} 
-    // carro = localStorage.getItem("MiCarro")
-    // localStorage.removeItem("Micarro")
-    storrageeCarro()
-  carro =  carros + carro
-  function storrageeCarro(){
-  localStorage.setItem("carrito",JSON.stringify(carro))
-  if(localStorage.getItem("carrito")){
-    carro = JSON.parse(localStorage.getItem("carrito"))
-  }
-  }
-  
-   
+    let carro =[]
+    shoppingCartContent + carro
   const botonborrar =  shoppingCartRow.querySelector('.buttonDelete')
     botonborrar.addEventListener('click',removeShoppingCartItem)
 
@@ -165,15 +155,11 @@ function addItemToShoppingCart(itemTitle, itemPrice, itemImage){
 
     updateShoppingCartTotal()
     
-    if(carro){
-      graciass()      
-    }
+    graciass()
 
 
     
 }
-
-
 
  function updateShoppingCartTotal() {
    let total = 0
@@ -251,4 +237,5 @@ function main(){
   })
 
 }
+
 main()
