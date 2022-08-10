@@ -16,10 +16,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-footer{
+/* footer{
   background-color: dimgray;
   color: white;
-}
+} */
 
 /* ======= NAVBAR ======= */
 header ul li :hover{
@@ -32,12 +32,12 @@ nav {
   border-bottom: 1px solid gray;
 }
 
-.brandd {
+/* .brandd {
   font-size: 1.5em;
   font-weight: bold;
   color: var(--primary-color);
   font-family: 'Montserrat', sans-serif;
-}
+} */
 
 span {
   color: var(--alt-color);
@@ -48,10 +48,10 @@ span {
   padding: 5px 20px;
 }
 
-.fa-bars {
+/* .fa-bars {
   font-size: 1.8em;
   cursor: pointer;
-}
+} */
 
 
 /* ======= MENU ======= */
@@ -70,14 +70,14 @@ span {
   transition: all 0.5s ease-in-out;
 }
 
-.show-menu {
+ .show-menu {
   transform: translateX(0%);
 }
 
 .menu__links {
   list-style: none;
   margin-bottom: 3em;
-}
+} 
 
 .menu__item {
   font-size: 1.5em;
